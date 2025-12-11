@@ -22,7 +22,7 @@ let gameOver = new GameOver(canvas, pencil)
 let gameWin = new GameWin(canvas, pencil)
 let title = new Title(canvas, pencil)
 
-let state = game
+let state = title
 game.enter()
 
 
@@ -64,9 +64,9 @@ function gameLoop(){
     if (game.enemy.x > canvas.clientWidth){
         game.enemy.x = canvas.clientWidth - canvas.clientWidth - 110;
     } 
-    // if (game.enemy.x - 25 < canvas.clientWidth - 650){
-    //     game.enemy.x = canvas.clientWidth;
-    // }
+    
+
+    
 
 }
 

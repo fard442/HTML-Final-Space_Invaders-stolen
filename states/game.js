@@ -15,7 +15,6 @@ export class Game {
         this.player = new Player(this.pencil, this.canvas);
         this.enemy = new Enemy(this.pencil, this.canvas);
         this.laserEnemy = new laserEnemy(this.pencil, this.canvas);
-        this.laserPlayer = new laserPlayer(this.pencil, this.canvas, this.player, this.enemy);
 
         //enemy additon area
         
@@ -50,6 +49,31 @@ export class Game {
             this.stars[i].tryRecycle()
         }
     }
+
+
+
+
+    missles = []
+    maxMissles = 1
+
+    //into the index they go
+    pushMissles(){
+        
+        this.newMissle = new laserPlayer(this.pencil, this.canvas, this.player, this.enemy)
+        this.missles.push(this.newMissle)
+        this.newMissle.shoot()
+    }
+
+
+    //into the fire they go (movement for stars in background)
+    moveMissles(){
+        for(let i=0; i < this.missles.length; i++){
+            // console.log(this.star.sizeMult)
+            this.missles[i].movePlayerLaser()
+            // this.missles[i].drawPlayerLaser()
+            console.log("moved")
+        }
+    }
     
 
 //game gode
@@ -59,7 +83,13 @@ export class Game {
         let isSpacePressed = event.key == " "
 
         if(isSpacePressed){
-            this.laserPlayer.shoot();
+            
+            
+            this.pushMissles()
+            
+           
+            console.log(this.missles)
+            
         }
     }
 
@@ -67,20 +97,21 @@ export class Game {
     
     //big chillin gameloop code
     update(){
+        //stars
         this.drawSpace();
         this.pushStars();
         this.moveStars();
+        //player and enemy(ies)
+        this.moveMissles()
         this.player.drawPlayer();
         this.enemy.drawEnemy();
 
         this.enemy.moveEnemyRight();
         
-        // this.laserPlayer.drawPlayerLaser()
+        //player laser
         
-        // this.pencil.font = "20px Georgia"
-        // this.pencil.fillText("Game", 10, 50)
-
-        this.laserPlayer.update();
+        
+        
 
     }
 

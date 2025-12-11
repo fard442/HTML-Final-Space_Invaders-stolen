@@ -6,7 +6,7 @@ export class laserPlayer {
     y=200;
     width=50;
     height=75;
-    velocity;
+    velocity=5;
     pencil;
     canvas;
 
@@ -30,17 +30,28 @@ export class laserPlayer {
         // console.log(this);
 
         this.x = this.player.x + 23;
-        this.y = this.player.y + 100;
+        this.y = this.player.y;
         this.isFired = true;
+        console.log("shot")
 
     }
     // this.drawPlayerLaser();
+    drawPlayerLaser(){
+        this.pencil.drawImage(playerLaser, this.x, this.y, this.width, this.height);
+    }
+
+    movePlayerLaser(){
+        this.drawPlayerLaser();
+        this.y -= this.velocity;
+        console.log("test")
+    }
 
     update () {
         if(this.isFired) {
-            this.player.pencil.drawImage(playerLaser, this.x, this.y, this.width, this.height);
-            this.y -= 5;
+            this.movePlayerLaser()
+            console.log("moving")
         }
+        
 
 
     }

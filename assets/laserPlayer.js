@@ -9,7 +9,6 @@ export class laserPlayer {
     velocity;
     pencil;
     canvas;
-    
 
     isFired = false;
 
@@ -22,35 +21,25 @@ export class laserPlayer {
     }
     playerLaserModel = document.getElementById("playerLaser")
     
-    
-       
-            
-            
-            
-       
+
     shoot(){
         // if ( == ){
         //     console.log("44")
         // }
         // console.log("worked");
         // console.log(this);
-        
-        // this.x = this.player.x + 23;
-        // this.y = this.player.y + 100;
-        
+
+        this.x = this.player.x + 23;
+        this.y = this.player.y + 100;
         this.isFired = true;
-        
-        
+
     }
     // this.drawPlayerLaser();
 
     update () {
         if(this.isFired) {
-            
-            // this.player.pencil.drawImage(playerLaser, this.x, this.y, this.width, this.height);
+            this.player.pencil.drawImage(playerLaser, this.x, this.y, this.width, this.height);
             this.y -= 5;
-            // console.log(this.missleList)
-            
         }
 
 

@@ -18,7 +18,6 @@ export class Game {
         this.laserPlayer = new laserPlayer(this.pencil, this.canvas, this.player, this.enemy);
 
         //enemy additon area
-        this.missleList = [];
         
     }
 
@@ -60,14 +59,7 @@ export class Game {
         let isSpacePressed = event.key == " "
 
         if(isSpacePressed){
-            if(this.missleList.length < 5) {
-                this.laserPlayer.x = this.player.x + 23;
-                this.laserPlayer.y = this.player.y + 100;
-                this.missle=this.pencil.drawImage(playerLaser, this.laserPlayer.x, this.laserPlayer.y, this.laserPlayer.width, this.laserPlayer.height);
-                // this.laserPlayer.missleList.push(new laserPlayer(this.pencil, this.canvas, this.player, this.enemy));
-                this.laserPlayer.shoot();
-            }
-            this.missleList.push(this.missle)
+            this.laserPlayer.shoot();
         }
     }
 
@@ -82,10 +74,6 @@ export class Game {
         this.enemy.drawEnemy();
 
         this.enemy.moveEnemyRight();
-        if (this.laserPlayer.y + 25 < 0){
-                console.log(this.missleList)
-                
-        }
         
         // this.laserPlayer.drawPlayerLaser()
         

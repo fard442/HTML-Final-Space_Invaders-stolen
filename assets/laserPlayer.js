@@ -23,16 +23,11 @@ export class laserPlayer {
     
 
     shoot(){
-        // if ( == ){
-        //     console.log("44")
-        // }
-        // console.log("worked");
-        // console.log(this);
 
         this.x = this.player.x + 23;
         this.y = this.player.y;
         this.isFired = true;
-        console.log("shot")
+        
 
     }
     // this.drawPlayerLaser();
@@ -43,17 +38,9 @@ export class laserPlayer {
     movePlayerLaser(){
         this.drawPlayerLaser();
         this.y -= this.velocity;
-        console.log("test")
-    }
-
-    update () {
-        if(this.isFired) {
-            this.movePlayerLaser()
-            console.log("moving")
-        }
         
-
-
     }
+
+    
 
 }

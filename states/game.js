@@ -17,7 +17,7 @@ export class Game {
         this.laserEnemy = new laserEnemy(this.pencil, this.canvas);
 
         //enemy additon area
-        
+        this.enemyShooting = this.enemyShooting.bind(this)
     }
 
     //star section
@@ -54,7 +54,6 @@ export class Game {
 
 
     missles = []
-    maxMissles = 1
 
     //into the index they go
     pushMissles(){
@@ -65,16 +64,39 @@ export class Game {
     }
 
 
-    //into the fire they go (movement for stars in background)
+    //into the fire they go (movement for missles for player)
     moveMissles(){
         for(let i=0; i < this.missles.length; i++){
-            // console.log(this.star.sizeMult)
+            
             this.missles[i].movePlayerLaser()
-            // this.missles[i].drawPlayerLaser()
-            console.log("moved")
+            
+           
         }
     }
     
+
+
+
+    eL = []
+
+    //into the index they go
+    pushEL(){
+        
+        this.newEL = new laserEnemy(this.pencil, this.canvas, this.player, this.enemy)
+        this.eL.push(this.newEL)
+        this.newEL.shoot()
+    }
+
+
+    //into the fire they go (movement for missles for player)
+    moveEL(){
+        for(let i=0; i < this.eL.length; i++){
+            
+            this.eL[i].moveEnemyLaser()
+            
+            
+        }
+    }
 
 //game gode
 
@@ -88,14 +110,25 @@ export class Game {
             this.pushMissles()
             
            
-            console.log(this.missles)
+            
             
         }
     }
 
 
-    
+    enemyShooting(){
+        
+        this.pushEL()
+        // this.moveEL()
+        
+    }
     //big chillin gameloop code
+
+    enter(){
+        // console.log("gar")
+        setInterval(this.enemyShooting, 1000)
+        
+    }
     update(){
         //stars
         this.drawSpace();
@@ -103,9 +136,10 @@ export class Game {
         this.moveStars();
         //player and enemy(ies)
         this.moveMissles()
+        
         this.player.drawPlayer();
         this.enemy.drawEnemy();
-
+        this.moveEL()
         this.enemy.moveEnemyRight();
         
         //player laser

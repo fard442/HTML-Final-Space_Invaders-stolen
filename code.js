@@ -23,6 +23,8 @@ let gameWin = new GameWin(canvas, pencil)
 let title = new Title(canvas, pencil)
 
 let state = game
+game.enter()
+
 
 
 // console.log(playerLaser)
@@ -40,6 +42,7 @@ function gameLoop(){
         state = gameOver
     }
     if(command == "game"){
+        game.enter()
         state = game
     }
     if(command == "gameWin"){
@@ -58,12 +61,12 @@ function gameLoop(){
     }
 
     //checks enemy on edge
-    if (game.enemy.x + 50 > canvas.clientWidth + 75){
-        game.enemy.x = canvas.clientWidth - canvas.clientWidth - 5;
+    if (game.enemy.x > canvas.clientWidth){
+        game.enemy.x = canvas.clientWidth - canvas.clientWidth - 110;
     } 
-    if (game.enemy.x - 25 < canvas.clientWidth - 650){
-        game.enemy.x = canvas.clientWidth;
-    }
+    // if (game.enemy.x - 25 < canvas.clientWidth - 650){
+    //     game.enemy.x = canvas.clientWidth;
+    // }
 
 }
 
